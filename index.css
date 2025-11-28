@@ -1,0 +1,249 @@
+/* Fundo da página */
+body {
+    background: #111;             /* cor de fundo escura */
+    margin: 0;                    /* remove margens padrão */
+    padding: 0;                   /* remove espaçamentos internos */
+    font-family: monospace;/* define a fonte do site */
+    overflow-x: hidden;           /* evita rolagem horizontal */
+}
+
+/* Container do menu */
+.container {
+    width: 100vw;          /* largura total da tela */
+    min-width: 100vw;      /* não diminui menos que isso */
+    max-width: 100vw;      /* não passa disso */
+    height: 60px;          /* altura da barra */
+    background: #575757; /* cor da barra */
+    display: flex;         /* ativa flexbox */
+    align-items: center;   /* centraliza vertical */
+    justify-content: flex-end; /* joga os itens p/ direita */
+    padding-right: 100px;   /* espaço da borda direita */
+    box-sizing: border-box;/* inclui padding no tamanho */
+    position: fixed;       /* fixa no topo */
+    top: 0;                /* cola no topo */
+    left: 0;               /* cola na esquerda */
+    z-index: 1000;         /* fica acima de tudo */
+}
+
+
+
+/* Espaço para não tampar conteúdo caso fixe o menu */
+body::before {
+    content: '';                 /* cria um elemento vazio */
+    display: block;              /* faz ele ocupar espaço */
+    height: 60px;                /* mesma altura da barra para empurrar conteúdo */
+}
+
+/* Lista do menu */
+ul {
+    margin: 0;                   /* remove margem padrão */
+    padding: 0;                  /* remove padding padrão */
+    list-style: none;            /* tira as bolinhas da lista */
+    display: flex;               /* coloca itens lado a lado */
+    gap: 35px;                   /* espaço entre os itens */
+}
+
+/* Links */
+ul a {
+    text-decoration: none;       /* remove sublinhado */
+    color: #ffffff;            /* deixa o texto branco */
+    font-size: 17px;             /* tamanho do texto */
+    position: relative;          /* permite underline animado */
+    padding-bottom: 5px;         /* distância da linha animada */
+    transition: color 0.2s ease; /* anima troca de cor */
+}
+
+/* Linha animada */
+ul a::after {
+    content: "";                 /* cria a linha */
+    position: absolute;          /* posiciona dentro do link */
+    left: 0;                     /* começa na esquerda */
+    bottom: 0;                   /* fica logo abaixo do texto */
+    width: 0%;                   /* começa invisível */
+    height: 2px;                 /* espessura da linha */
+    background: #0033c0;         /* cor azul da linha */
+    transition: width 0.3s ease; /* anima largura ao passar mouse */
+}
+
+/* Hover */
+ul a:hover {
+    color: #0033c0;              /* troca cor ao passar mouse */
+}
+
+ul a:hover::after {
+    width: 100%;                 /* underline cresce até o tamanho total */
+}
+
+/* Texto/ Titulo*/
+.titulo_texto h1 {
+    color: #ffffff;          /* cor do texto */
+    font-size: 5rem;           /* tamanho da fonte */
+    position: relative;        /* permite ajustar com left */
+    margin-top: 150px;         /* espaço do topo */
+    left: 250px;               /* desloca para a direita */
+
+    display: inline-block;
+    font-weight: 700;          /* texto mais forte */
+    border-right: 12px solid #fff; /* cursor da animação */
+    white-space: nowrap;       /* impede quebra de linha */
+    overflow: hidden;          /* esconde até digitar */
+
+    font-family: monospace;
+
+    width: 13ch;                /* largura exata para "MK_475" */
+    animation: 
+        cursorBlink 0.7s step-end infinite,   /* piscar do cursor */
+        typewriter 3s steps(13, end) infinite; /* digitação de 6 caracteres */
+}
+
+/* animação do cursor piscando */
+@keyframes cursorBlink {
+    50% {
+        border-right-color: transparent;
+    }
+}
+
+
+/* animação da escrita */
+@keyframes typewriter {
+    0% {
+        width: 0ch;   /* começa sem nada */
+    }
+    40% {
+        width: 13ch;   /* mostra tudo */
+    }
+    70% {
+        width: 13ch;   /* mantém texto completo */
+    }
+    100% {
+        width: 0ch;   /* apaga */
+    }
+}
+
+.titulo_texto h2 {
+    color: #f70000;          /* cor do texto */
+    font-size: 2rem;           /* tamanho da fonte */
+    position: relative;        /* permite ajustar com left */
+    margin-top: 10px;          /* espaço do topo */
+    left: 250px;               /* desloca para a direita */
+}
+.titulo_texto p {
+    color: #ffffff;      /* cor do texto */
+    font-size: 15px;
+    position: relative;    /* permite mover usando left */
+    left: 250px;           /* empurra o parágrafo para a direita */
+    text-align: justify;   /* alinha o texto dos dois lados */
+    width: 600px;          /* define largura e permite quebra de linha */
+}
+
+
+/*Imagem perfil*/
+.foto {
+    position: absolute;   /* deixa a imagem livre para posicionar */
+    left: 1200px;         /* distancia da esquerda (ajuste caso precise) */
+    top: 225px;           /* distancia do topo (ajuste também) */
+    opacity: 50%;
+}
+
+.foto img {
+    width: 350px;         /* tamanho da imagem */
+    border-radius: 50%;  /*Largura da borda*/
+
+}
+
+
+/*JOGOS NAVEGAÇÃO*/
+.jogos {
+    text-align: center; /* centraliza o título */
+    margin-top: 320px;  /* deslocamento do h1 */
+    scroll-margin-top: 100px; /* ajuste conforme o tamanho do header e afasta do topo*/
+}
+
+.jogos h1 {
+    color: rgb(255, 255, 255); /*cor do texto*/
+    font-size: 5rem; /*tamanho da fonte*/
+    margin-bottom: 250px; /* aumenta o espaço entre o título e as imagens */
+}
+
+/*JOGOS IMAGENS*/
+.jogos .imagens {
+    display: flex;              /* alinha as imagens em linha */
+    justify-content: center;    /* centraliza horizontalmente */
+    gap: 50px;                  /* espaço entre as imagens */
+    margin-top: 150px;           /* distância do título */
+    perspective: 1000px;        /* efeito 3D para rotação */
+
+    display: flex;              /* repete flex (redundante, pode remover) */
+    justify-content: flex-start;/* alinhamento inicial à esquerda */
+    gap: 50px;                  /* espaço entre imagens (repete) */
+    overflow: hidden;           /* esconde o que sair do container */
+    width: 100%;                /* ocupa toda a largura */
+    position: relative;         /* base para posicionamento absoluto das imagens */
+    height: 350px;              /* altura fixa do container */
+}
+
+.jogos .imagens img {
+    width: 200px;               /* largura da imagem */
+    height: 300px;              /* altura da imagem */
+    object-fit: cover;          /* mantém proporção cobrindo a área */
+    border: 3px solid #ffffff; /* borda da imagem */
+    border-radius: 20px;        /* cantos arredondados */
+}
+
+.jogos .imagens a {
+    display: block;             /* cada link como bloco */
+    position: absolute;         /* permite animar individualmente */
+    top: 0;                     /* topo do container */
+    opacity: 0;                 /* inicia invisível */
+    animation: slideLeft 12s linear infinite; /* animação contínua */
+}
+
+.jogos .imagens a:nth-child(1) { animation-delay: 0s; }   /* atraso inicial */
+.jogos .imagens a:nth-child(2) { animation-delay: 2s; }   /* atraso da 2ª imagem */
+.jogos .imagens a:nth-child(3) { animation-delay: 4s; }   /* atraso da 3ª imagem */
+.jogos .imagens a:nth-child(4) { animation-delay: 6s; }   /* atraso da 4ª imagem */
+.jogos .imagens a:nth-child(5) { animation-delay: 8s; }   /* atraso da 5ª imagem */
+.jogos .imagens a:nth-child(6) { animation-delay: 10s; }  /* atraso da 6ª imagem */
+
+@keyframes slideLeft {
+    0% {
+        opacity: 1;              /* começa visível */
+        transform: translateX(100vw); /* fora da tela à direita */
+    }
+    90% {
+        opacity: 1;              /* continua visível */
+        transform: translateX(-250px); /* quase saindo à esquerda */
+    }
+    100% {
+        opacity: 0;              /* desaparece */
+        transform: translateX(-250px); /* permanece fora à esquerda */
+    }
+}
+
+
+/*Perfil do jogador*/
+.jogador{
+    text-align: center; /* centraliza o título */
+    margin-top: 400px;          /* espaço do topo */
+}
+
+.jogador h1 {
+    color: rgb(255, 255, 255); /*Cor do texto*/
+    font-size: 5rem; /*Tamanho da fonte*/
+}
+
+.jogador h2 {
+    color: #f70000; /*cor da fonte*/
+    font-size: 3rem;
+    /*position: relative;    /* permite mover usando left */
+    /*left: 250px;           /* empurra o parágrafo para a direita */
+
+}
+
+.jogador h3 {
+    color: #ffffff;
+    font-size: 1rem;
+    width: 600px;
+    margin: 0 auto;       /* centraliza o bloco */
+    text-align: justify;  /* texto justificado */
+}
